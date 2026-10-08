@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="fr">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="theme-color" content="#2c3d57">
+	<meta name="description" content="Diagnostic automobile OBD-II et espace de suivi des documents de votre véhicule.">
+	<title>Auto Scan — Diagnostic auto</title>
+	<link rel="manifest" href="manifest.webmanifest">
+	<link rel="icon" href="auto-scan.svg" type="image/svg+xml">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-title" content="Auto Scan">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="style.css">
+	<script src="script.js" defer></script>
+</head>
+<body>
+	<div class="app-shell">
+		<aside class="sidebar" aria-label="Navigation principale">
+			<a class="brand" href="#accueil" aria-label="Auto Scan, accueil">
+				<span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M6 20.5 8.3 13a3 3 0 0 1 2.9-2.1h9.6a3 3 0 0 1 2.9 2.1l2.3 7.5v5h-3v-2H9v2H6v-5Zm4-1h12l-1.4-5H11.4L10 19.5ZM10 22a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3Zm12 0a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3ZM4 7h8M7 4v6m13-3h8"/></svg></span>
+				<span class="brand-copy"><strong>auto<span>scan</span></strong><small>DIAGNOSTIC AUTO</small></span>
+			</a>
+			<div class="nav-label">MON ESPACE</div>
+			<nav class="nav-list">
+				<a class="nav-item active" href="#diagnostic"><svg viewBox="0 0 24 24"><path d="M4 13h4l3-8 4 14 3-6h2"/></svg><span>Diagnostic</span><i></i></a>
+				<a class="nav-item" href="#historique"><svg viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 2.64-6.36L3 8m0-5v5h5m4-1v5l3 2"/></svg><span>Historique</span></a>
+				<a class="nav-item" href="#vehicule"><svg viewBox="0 0 24 24"><path d="m5 11 1.5-4.5A2 2 0 0 1 8.4 5h7.2a2 2 0 0 1 1.9 1.5L19 11l1 2v5h-3v-2H7v2H4v-5l1-2Zm1 0h12M7 13h.01M17 13h.01"/></svg><span>Mon véhicule</span></a>
+				<a class="nav-item" href="#documents"><svg viewBox="0 0 24 24"><path d="M6 3h8l4 4v14H6a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2Zm8 0v5h5M8 12h8m-8 4h8"/></svg><span>Documents</span><i></i></a>
+				<a class="nav-item" href="#catalogue"><svg viewBox="0 0 24 24"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v17H6.5A2.5 2.5 0 0 1 4 17.5v-12ZM4 16a2 2 0 0 1 2-2h14M8 7h8m-8 3h6"/></svg><span>Base anomalies</span></a>
+			</nav>
+			<div class="sidebar-bottom">
+				<div class="plan-card"><div class="plan-top"><span></span> OFFRE DÉCOUVERTE</div><p>Le suivi auto, sans détour.</p><button class="text-button" id="plans-button">Découvrir les offres <b>↗</b></button></div>
+				<div class="profile"><div class="avatar">A</div><div class="profile-text"><strong>Mon espace</strong><span>Stockage sur cet appareil</span></div><span class="profile-state"></span></div>
+			</div>
+		</aside>
+
+		<main id="accueil" class="main-content">
+			<header class="topbar"><div class="breadcrumbs"><span>Auto Scan</span><b>/</b><strong>Diagnostic</strong></div><div class="topbar-actions"><span class="secure-label"><i></i> Vos données restent sur cet appareil</span><button class="icon-button" id="settings-button" aria-label="Options" title="Options"><svg viewBox="0 0 24 24"><path d="M4 7h9m4 0h3M4 17h3m4 0h9M13 4v6m-2 4v6"/></svg></button><button class="icon-button help-button" id="help-button" aria-label="Aide et compatibilité" title="Aide">?</button></div></header>
+			<div class="page-wrap">
+				<section class="page-heading" id="diagnostic">
+					<div><div class="eyebrow"><i></i> GARAGE NUMÉRIQUE</div><h1>Tout savoir sur votre auto.</h1><p class="subtitle">Lisez les défauts du véhicule et gardez vos documents importants au même endroit.</p></div>
+					<div class="connection-area"><div class="connection-state"><i id="connection-indicator"></i><span id="connection-label">Adaptateur non connecté</span></div><button class="button button-dark" id="connect-button"><svg viewBox="0 0 24 24"><path d="M8 7V4m8 3V4M8 12V9m8 3V9M7 7h10a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2h-2v3h-4v-3H7a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2Z"/></svg><span id="connect-button-label">Connecter l’adaptateur</span></button></div>
+				</section>
+
+				<section class="connection-banner" id="connection-banner" aria-live="polite"><div class="banner-icon"><svg viewBox="0 0 24 24"><path d="M12 8v4m0 4h.01M10 3.5 2.8 17a2 2 0 0 0 1.8 3h14.8a2 2 0 0 0 1.8-3L14 3.5a2.3 2.3 0 0 0-4 0Z"/></svg></div><div><strong>Adaptateur requis pour le diagnostic réel</strong><p>USB-C est le connecteur : branchez un adaptateur OBD-II ELM327 compatible, puis autorisez le port série.</p></div><button class="banner-close" aria-label="Masquer">×</button></section>
+
+				<section class="vehicle-section" id="vehicule"><div class="section-heading"><div><span class="section-kicker">VOTRE VÉHICULE</span><h2>Fiche véhicule</h2></div><span class="optional-label">Facultatif</span></div>
+					<div class="vehicle-fields">
+						<label class="field"><span>Immatriculation</span><input id="vehicle-plate" maxlength="12" placeholder="AA-123-BB" autocomplete="off"></label>
+						<label class="field"><span>Marque</span><input id="vehicle-make" maxlength="32" placeholder="Ex. Peugeot" autocomplete="off"></label>
+						<label class="field"><span>Modèle / année</span><input id="vehicle-model" maxlength="48" placeholder="Ex. 208, 2022" autocomplete="off"></label>
+						<label class="field"><span>VIN <small>17 caractères</small></span><input id="vehicle-vin" maxlength="17" placeholder="Numéro de série" autocomplete="off"></label>
+						<button class="button button-light save-vehicle" id="save-vehicle"><svg viewBox="0 0 24 24"><path d="M5 4h12l3 3v13H4V4h1Zm3 0v6h8V4m-8 16v-7h8v7"/></svg> Enregistrer</button>
+					</div><span class="saved-message" id="vehicle-saved" aria-live="polite"></span>
+				</section>
+
+				<section class="scan-layout"><article class="scan-panel"><div class="panel-topline"><div><span class="section-kicker">LECTURE OBD-II</span><h2>Diagnostic moteur</h2></div><span class="protocol-tag"><i></i> ELM327 · OBD-II</span></div><p class="scan-description">Lecture des défauts confirmés, en attente et permanents. Aucun code n’est effacé.</p>
+					<div class="scan-progress" id="scan-progress" hidden><div class="progress-copy"><span id="progress-label">Préparation…</span><span id="progress-percent">0%</span></div><div class="progress-track"><i id="progress-bar"></i></div></div>
+					<div class="scan-actions"><button class="button button-primary" id="scan-button" disabled><svg viewBox="0 0 24 24"><path d="M12 3v3m0 12v3M3 12h3m12 0h3M5.64 5.64l2.12 2.12m8.48 8.48 2.12 2.12m0-12.72-2.12 2.12m-8.48 8.48-2.12 2.12M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8Z"/></svg>Lancer le diagnostic</button><button class="button button-outline" id="demo-button">Voir une démo</button></div>
+					<div class="scan-footnote"><svg viewBox="0 0 24 24"><path d="M12 3 4 6v5c0 5 3.4 8.5 8 10 4.6-1.5 8-5 8-10V6l-8-3Zm-3 9 2 2 4-4"/></svg>Lecture seule, les calculateurs ne sont pas modifiés.</div>
+				</article><aside class="quick-stats"><div class="stat-row"><i class="stat-icon stat-green"><svg viewBox="0 0 24 24"><path d="M4 12h4l3-8 4 16 3-8h2"/></svg></i><div><span>Dernier diagnostic</span><strong id="last-scan-stat">Jamais</strong></div></div><div class="stat-row"><i class="stat-icon stat-orange"><svg viewBox="0 0 24 24"><path d="M12 9v4m0 4h.01M10 3.5 2.8 17a2 2 0 0 0 1.8 3h14.8a2 2 0 0 0 1.8-3L14 3.5a2.3 2.3 0 0 0-4 0Z"/></svg></i><div><span>Défauts détectés</span><strong id="faults-stat">—</strong></div></div><div class="stat-row"><i class="stat-icon stat-blue"><svg viewBox="0 0 24 24"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v17H6.5A2.5 2.5 0 0 1 4 17.5v-12ZM4 16a2 2 0 0 1 2-2h14"/></svg></i><div><span>Codes expliqués</span><strong id="catalog-stat">4 codes</strong></div></div></aside></section>
+
+				<section class="results-section"><div class="section-heading results-heading"><div><span class="section-kicker">RAPPORT</span><h2 id="results-title">En attente d’une analyse</h2></div><button class="button button-light export-button" id="export-button" disabled><svg viewBox="0 0 24 24"><path d="M12 3v12m-5-5 5 5 5-5M4 17v3h16v-3"/></svg>Exporter</button></div><div class="empty-state" id="empty-state"><div class="empty-graphic"><svg viewBox="0 0 64 64"><path d="M11 39 16 23a5 5 0 0 1 4.8-3.5h22.4a5 5 0 0 1 4.8 3.5L53 39v11h-6v-4H17v4h-6V39Zm7.5-3h27l-3-10H21.5l-3 10ZM19 40h.1m25.8 0h.1M24 9l8 8 8-8"/></svg></div><strong>Votre véhicule attend son premier scan</strong><p>Connectez un adaptateur ou lancez une simulation pour découvrir le rapport.</p></div><div class="fault-list" id="fault-list" hidden></div></section>
+
+				<section class="history-section" id="historique"><div class="section-heading"><div><span class="section-kicker">SUIVI</span><h2>Historique récent</h2></div><button class="link-button" id="clear-history">Effacer</button></div><div class="history-table-wrap"><table class="history-table"><thead><tr><th>DATE</th><th>VÉHICULE</th><th>RÉSULTAT</th><th>SOURCE</th></tr></thead><tbody id="history-body"><tr class="history-empty"><td colspan="4">Aucun diagnostic enregistré.</td></tr></tbody></table></div></section>
+
+				<section class="documents-section" id="documents"><div class="documents-heading"><div><span class="section-kicker">VOTRE BOÎTE À GANTS</span><h2>Les papiers de votre auto,<br><span>enfin plus clairs.</span></h2><p>Contrôle technique, facture de garage, carte grise, reçu ou autre document : rassemblez-les et obtenez des repères de lecture.</p></div><div class="privacy-note"><svg viewBox="0 0 24 24"><path d="M12 3 4 6v5c0 5 3.4 8.5 8 10 4.6-1.5 8-5 8-10V6l-8-3Zm-3 9 2 2 4-4"/></svg>Conservés uniquement sur cet appareil</div></div>
+					<div class="document-workspace"><div class="document-upload"><div class="doc-label">1 · AJOUTER UN DOCUMENT</div><label class="field document-type-field"><span>Type de document</span><select id="document-type"><option>Contrôle technique</option><option>Facture garage</option><option>Devis garage</option><option>Carte grise</option><option>Reçu garage</option><option>Autre document auto</option></select></label><label class="drop-zone" for="document-file"><span class="upload-icon"><svg viewBox="0 0 24 24"><path d="M12 16V4m-5 5 5-5 5 5M4 15v5h16v-5"/></svg></span><strong>Ajouter un fichier</strong><span>PDF, JPG, PNG ou WebP · max. 15 Mo</span></label><input id="document-file" type="file" accept="application/pdf,image/jpeg,image/png,image/webp" hidden><div class="document-list" id="document-list"></div></div>
+						<div class="document-reader"><div class="doc-label">2 · COMPRENDRE LES INFORMATIONS</div><label class="field"><span>Copiez les lignes ou mentions importantes</span><textarea id="document-text" rows="5" placeholder="Ex. Résultat du contrôle : défavorable. Défaillance majeure : efficacité du frein de stationnement..."></textarea></label><div class="reader-actions"><button class="button button-dark" id="explain-document"><svg viewBox="0 0 24 24"><path d="M12 3v2m0 14v2M3 12h2m14 0h2M5.6 5.6 7 7m10 10 1.4 1.4m0-12.8L17 7M7 17l-1.4 1.4M9 9h6v6H9z"/></svg>Expliquer ces informations</button><span>Aide guidée, sans avis juridique ou mécanique.</span></div><div class="document-explanation" id="document-explanation" hidden></div></div></div>
+					<div class="document-disclaimer"><strong>À savoir</strong><span>Le fichier est archivé dans le navigateur. Cette version ne lit pas automatiquement le texte d’un scan ou d’une photo : copiez les passages à expliquer dans la zone ci-dessus. Les documents ne quittent pas cet appareil.</span><button class="link-button" id="clear-documents">Vider mes documents</button></div>
+				</section>
+
+				<section class="catalog-section" id="catalogue"><div class="catalog-copy"><span class="section-kicker">BASE QUI ÉVOLUE</span><h2>Un code absent ?<br><span>Ajoutez sa description.</span></h2><p>Importez des définitions OBD-II au format JSON. Les ajouts sont stockés sur cet appareil.</p></div><div class="catalog-action"><label class="button button-light import-button" for="catalog-file"><svg viewBox="0 0 24 24"><path d="M12 16V4m-5 5 5-5 5 5M4 15v5h16v-5"/></svg>Importer un catalogue</label><input id="catalog-file" type="file" accept="application/json,.json" hidden><span>JSON · code, title, description</span><a href="#format" id="format-link">Voir le format</a></div></section>
+
+				<footer class="footer"><span>AUTO<span class="footer-accent">SCAN</span> · DIAGNOSTIC AUTO</span><span>OBD-II standard · données locales</span><button id="reset-data" class="footer-reset">Réinitialiser les données</button></footer>
+			</div>
+		</main>
+	</div>
+	<dialog class="modal" id="info-modal"><form method="dialog"><button class="modal-close" aria-label="Fermer">×</button><span class="section-kicker" id="modal-kicker">INFORMATION</span><h2 id="modal-title">Auto Scan</h2><div class="modal-content" id="modal-content"></div><button class="button button-dark modal-done">Compris</button></form></dialog>
+	<dialog class="modal settings-modal" id="settings-modal"><form method="dialog"><button class="modal-close" aria-label="Fermer">×</button><span class="section-kicker">PERSONNALISATION</span><h2>Options</h2><div class="settings-group"><strong>Affichage</strong><label class="switch-row"><span><b>Thème sombre</b><small>Adapter l’interface à votre environnement.</small></span><input type="checkbox" id="option-dark"><i></i></label></div><div class="settings-group"><strong>Diagnostic</strong><label class="switch-row"><span><b>Codes en attente</b><small>Inclure les anomalies détectées récemment.</small></span><input type="checkbox" id="option-pending"><i></i></label><label class="switch-row"><span><b>Codes permanents</b><small>Inclure les anomalies mémorisées par le calculateur.</small></span><input type="checkbox" id="option-permanent"><i></i></label><label class="field baud-field"><span>Débit série de l’adaptateur</span><select id="option-baud"><option value="38400">38 400 bauds</option><option value="9600">9 600 bauds</option><option value="115200">115 200 bauds</option></select></label></div><div class="settings-group"><strong>Confidentialité</strong><label class="switch-row"><span><b>Enregistrer l’historique</b><small>Garder les rapports sur cet appareil.</small></span><input type="checkbox" id="option-history"><i></i></label></div><button class="button button-dark modal-done">Terminer</button></form></dialog>
+</body>
+</html>

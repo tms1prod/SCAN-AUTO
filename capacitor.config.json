@@ -1,0 +1,17 @@
+{
+  "appId": "com.autoscan.app",
+  "appName": "Auto Scan",
+  "webDir": "www",
+  "backgroundColor": "#2c3d57",
+  "plugins": {
+    "SplashScreen": {
+      "launchShowDuration": 800,
+      "backgroundColor": "#2c3d57",
+      "showSpinner": false
+    },
+    "StatusBar": {
+      "backgroundColor": "#2c3d57",
+      "style": "LIGHT"
+    }
+  }
+}

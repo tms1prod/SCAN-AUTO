@@ -1,0 +1,28 @@
+{
+  "id": "./ind.html",
+  "name": "Auto Scan — Diagnostic automobile",
+  "short_name": "Auto Scan",
+  "description": "Diagnostic OBD-II et carnet de documents automobile.",
+  "lang": "fr-FR",
+  "start_url": "./ind.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#2c3d57",
+  "theme_color": "#2c3d57",
+  "categories": ["utilities", "auto"],
+  "icons": [
+    {
+      "src": "./icons/icon-192.webp",
+      "sizes": "192x192",
+      "type": "image/webp",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "./icons/icon-512.webp",
+      "sizes": "512x512",
+      "type": "image/webp",
+      "purpose": "any maskable"
+    }
+  ]
+}

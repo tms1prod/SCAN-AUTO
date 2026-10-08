@@ -1,0 +1,23 @@
+{
+  "name": "auto-scan",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Diagnostic automobile OBD-II et gestion des documents du véhicule.",
+  "scripts": {
+    "build": "node build.mjs",
+    "cap:sync": "npm run build && cap sync",
+    "android:open": "npm run cap:sync && cap open android",
+    "ios:open": "npm run cap:sync && cap open ios"
+  },
+  "dependencies": {
+    "@capacitor/android": "^8.5.3",
+    "@capacitor/core": "^8.5.3",
+    "@capacitor/ios": "^8.5.3",
+    "@capacitor/splash-screen": "^8.0.2",
+    "@capacitor/status-bar": "^8.0.4"
+  },
+  "devDependencies": {
+    "@capacitor/cli": "^8.4.3"
+  }
+}
